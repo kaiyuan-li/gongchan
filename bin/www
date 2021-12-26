@@ -8,18 +8,22 @@ var app = require('../app');
 var debug = require('debug')('gongchan:server');
 var http = require('http');
 
+const {startDatabase} = require('../database/mongo')
+const {insertAd} = require('../database/ads')
+
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
+console.log(`PORT is set to ${port}`)
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.

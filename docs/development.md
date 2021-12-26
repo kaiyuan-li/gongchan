@@ -1,0 +1,16 @@
+# Development
+
+## Database
+
+### MongoDB in memory
+[Reference](https://auth0.com/blog/node-js-and-express-tutorial-building-and-securing-restful-apis/) with API authentication
+
+[example test](https://github.com/nodkz/mongodb-memory-server/blob/master/packages/mongodb-memory-server-core/src/__tests__/singleDB.test.ts)
+
+## Authentication
+
+[Reference](https://www.djamware.com/post/5ac8338780aca714d19d5b9e/securing-mevn-stack-vuejs-2-web-application-using-passport)
+
+## Testing
+
+It's strongly recommeded to test server app with Mocha rather than Jest ([ref](https://mongoosejs.com/docs/jest.html)). Because jest for testing react applications.
