@@ -14,3 +14,9 @@
 ## Testing
 
 It's strongly recommeded to test server app with Mocha rather than Jest ([ref](https://mongoosejs.com/docs/jest.html)). Because jest for testing react applications.
+
+
+## Misc
+
+### Commit emoji
+[ref](https://gist.github.com/kaiyuan-li/f3d8c664a0534a40891e55c1762945c5)
