@@ -1,6 +1,7 @@
 // const config = require('../config/auth.config')
 const db = require('../models')
 const { User, Role} = db
+const config = require('../config/auto.config')
 
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
@@ -73,7 +74,7 @@ exports.signin = (req, res) => {
                 message: 'Invalid Password!'
             })
         }
-        const token = jwt.sign({id: user.id}, config.secret, {expresIn: 86400})
+        const token = jwt.sign({id: user.id}, config.secret, {expiresIn: 86400})
         let authorities = []
         user.roles.forEach(role => {
             authorities.push('ROLE_' + role.name.toUpperCase())

@@ -18,10 +18,11 @@ router.post(
     '/auth/signup',
     verifySignUp.checkDuplicateUsernameOrEmail,
     verifySignUp.checkRolesExisted,
+    verifySignUp.checkPassword,
     authController.signup
 )
 
-// router.post('/auth/signin', controller.signin)
+router.post('/auth/signin', authController.signin)
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

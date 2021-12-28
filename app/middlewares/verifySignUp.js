@@ -16,6 +16,11 @@ const checkDuplicateUsernameOrEmail = (req, res, next) => {
             return
         }
 
+        if (!req.body.email) {
+            res.status(400).send({ message: 'email cannot be empty' })
+            return
+        }
+
         User.findOne({
             email: req.body.email
         }).exec((err, user) => {
@@ -47,9 +52,18 @@ const checkRolesExisted = (req, res, next) => {
     next()
 }
 
+const checkPassword = (req, res, next) => {
+    if (!req.body.password) {
+        res.status(400).send({ message: "password cannot be empty"})
+        return
+    }
+    next()
+}
+
 const verifySignUp = {
     checkDuplicateUsernameOrEmail,
     checkRolesExisted,
+    checkPassword
 }
 
 module.exports = verifySignUp
