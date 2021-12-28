@@ -1,11 +1,31 @@
 var express = require('express');
-const app = require('../../../app');
+const app = require('../../../../app');
 const { getAds, deleteAd, updateAd, insertAd } = require('../../../database/ads');
 var router = express.Router();
+const verifySignUp = require('../../../middlewares/verifySignUp')
+const authController = require('../../../controllers/auth.controller')
+
+// All requests to this route will get it
+router.use((req, res, next) => {
+    res.header(
+        'Access-Control-Allow-Headers',
+        'x-access-token, Origin, Content-Type, Accept'
+    )
+    next()
+})
+
+router.post(
+    '/auth/signup',
+    verifySignUp.checkDuplicateUsernameOrEmail,
+    verifySignUp.checkRolesExisted,
+    authController.signup
+)
+
+// router.post('/auth/signin', controller.signin)
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.json({ message: "hello, welcome to api v0"})
+  res.status(200).json({ message: "hello, welcome to api v0"})
 });
 
 router.get('/ads', async (req, res) => {
@@ -28,5 +48,6 @@ router.post('/ads', async (req, res) => {
     await insertAd(newAd)
     res.send({message: 'new ad inserted'})
 })
+
 
 module.exports = router;

@@ -14,11 +14,13 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "core-js": "^3.6.5",
+    "firebase": "^9.6.1",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "vee-validate": "^4.3.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.6",
+    "vuefire": "^2.2.5",
     "vuex": "^4.0.0",
     "yup": "^0.32.9"
   },

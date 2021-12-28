@@ -1,17 +1,22 @@
-const expect = require('chai').expect
+const {expect} = require('chai')
 const mongoose = require('mongoose')
-const {initDb, cleanupDb} = require('./helper.js')
+const {
+    initializeInMemoryDb,
+    cleanupDb
+} = require('../db-helper')
+const { Role }= require('../../app/models')
 
-describe('Database connection test', () => {
-    beforeEach(async () => {
-        await initDb()
-    })
+before(async () => {
+    await initializeInMemoryDb()
+})
 
-    afterEach(async () => {
-        await cleanupDb()
-    })
+after(async () => await cleanupDb())
 
-    it('Can make connection to the DB', () => {
+
+describe('In memory MongoDb server connection', () => {
+    it('should connect to mongodb server', async () => {
         expect(mongoose.connection.readyState).to.equal(1)
+        const roles = await Role.find()
+        expect(roles).to.have.lengthOf(3)
     })
 })

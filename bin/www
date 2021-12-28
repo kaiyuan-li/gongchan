@@ -8,8 +8,6 @@ var app = require('../app');
 var debug = require('debug')('gongchan:server');
 var http = require('http');
 
-const {startDatabase} = require('../database/mongo')
-const {insertAd} = require('../database/ads')
 
 /**
  * Get port from environment and store in Express.

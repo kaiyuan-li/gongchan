@@ -20,3 +20,12 @@ It's strongly recommeded to test server app with Mocha rather than Jest ([ref](h
 
 ### Commit emoji
 [ref](https://gist.github.com/kaiyuan-li/f3d8c664a0534a40891e55c1762945c5)
+
+### Examples
+Tons of node mongoose vue3 [examples](https://github.com/bezkoder/node-js-jwt-auth-mongodb)
+
+
+### Good test example
+[ref](https://www.digitalocean.com/community/tutorials/test-a-node-restful-api-with-mocha-and-chai)
+
+[Official integration with mocha](https://nodkz.github.io/mongodb-memory-server/docs/guides/integration-examples/test-runners/#mocha--chai)
