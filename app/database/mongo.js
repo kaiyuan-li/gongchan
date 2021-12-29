@@ -3,6 +3,7 @@ const { Role } = require('../models')
 const db = require('../models')
 
 const startInMemoryDatabase = async () => {
+    console.log('starting up in memoery Mongo Database Server')
     const mongoMemoryServer = await MongoMemoryServer.create()
     return mongoMemoryServer
 }

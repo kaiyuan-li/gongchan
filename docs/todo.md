@@ -1,8 +1,10 @@
 # TODO list
 
-* add tests for all auth APIs
+* setup prod database connections
 
-* setup dev and prod database connections
+* setup dev seed data
+
+* Add a admin console to list all the users, and tag user as admin
 
 * add e2e test for auth workflow
 
@@ -13,3 +15,5 @@
 * Add comment function
 
 * Add user push email function
+
+* User auto login after signup

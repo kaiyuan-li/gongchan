@@ -3,7 +3,6 @@ const chaiHttp = require('chai-http')
 const app = require('../../app')
 const {
     initializeInMemoryDb,
-    resetDb,
     cleanupDb
 } = require('../db-helper')
 const { User }= require('../../app/models')
