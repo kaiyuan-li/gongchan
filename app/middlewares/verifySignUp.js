@@ -33,8 +33,8 @@ const checkRolesExisted = (req, res, next) => {
                 res.status(400).send(
                     { message: `FAILED! Role ${role} does not exist` }
                 )
+                return
             }
-            return
         }
     }
     next()

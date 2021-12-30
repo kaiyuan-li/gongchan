@@ -26,25 +26,12 @@ const verifyRole = (roleName) => {
                 res.status(500).send({ message: err })
                 return
             }
-            Role.find({
-                _id: { $in: (user && user.roles) ? user.roles : [] }
-            }, (err, roles) => {
-                if (err) {
-                    res.status(500).send({ message: err })
-                    return
-                }
-
-                for (let role of roles) {
-                    if (role.name === roleName) {
-                        next()
-                        return
-                    }
-                }
-
-                res.status(403).send({ message: `user doesn't have ${roleName} role` })
+            if (user.roles && user.roles.includes(roleName)) {
+                next()
                 return
             }
-            )
+            res.status(403).send({ message: `user doesn't have ${roleName} role` })
+            return
         })
     }
 }

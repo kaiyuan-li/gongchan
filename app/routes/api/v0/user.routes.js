@@ -18,6 +18,6 @@ router.get('/mod', verifyToken, isModerator, controller.moderatorBoard)
 
 router.get('/admin', verifyToken, isAdmin, controller.adminBoard)
 
-router.get('/allusers', controller.allUsers)
+router.get('/allusers', verifyToken, isAdmin, controller.allUsers)
 
 module.exports = router

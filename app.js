@@ -14,6 +14,7 @@ const bodyParser = require('body-parser')
 const { mongoose } = require('./app/models')
 
 const app = express()
+app.disable('etag')
 
 console.log(`Running in environment ${config.NODE_ENV}`)
 

@@ -29,3 +29,7 @@ Tons of node mongoose vue3 [examples](https://github.com/bezkoder/node-js-jwt-au
 [ref](https://www.digitalocean.com/community/tutorials/test-a-node-restful-api-with-mocha-and-chai)
 
 [Official integration with mocha](https://nodkz.github.io/mongodb-memory-server/docs/guides/integration-examples/test-runners/#mocha--chai)
+
+
+### Do not try to use vuetify
+Vuetify only supports vue2. Which will generate a lot of lagging for both vuex and vue router.
