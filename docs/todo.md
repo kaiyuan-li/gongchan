@@ -5,8 +5,6 @@
 
 * add retrieve password function
 
-* Adding create post and view post function
-
 * Add comment function
 
 * Add user push email function

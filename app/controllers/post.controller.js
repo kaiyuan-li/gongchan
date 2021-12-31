@@ -9,7 +9,7 @@ const submitPost = async (req, res) => {
         createdAt: req.body.createdAt
     })
     await post.save()
-    res.status(200).send({message: "Post submitted"})
+    res.status(200).send({message: post._id})
 }
 
 const getAllPosts = (req, res) => {
