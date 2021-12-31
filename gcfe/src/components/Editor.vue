@@ -46,21 +46,4 @@ export default {
     }, 300),
   },
 };
-// export default {
-//   setup() {
-//     const preMark = ref("");
-//     const postMark = computed({
-//       get: () => marked(preMark.value, { breaks: true, smartypants: true }),
-//     });
-//     onMounted(() => {
-//       if (localStorage.preMark) {
-//         preMark.value = localStorage.preMark;
-//       }
-//     });
-//     watch(preMark, (val, newVal) => {
-//       localStorage.preMark = newVal;
-//     });
-//     return { preMark, postMark };
-//   },
-// };
 </script>

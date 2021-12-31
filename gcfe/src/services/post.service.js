@@ -15,6 +15,16 @@ class PostService {
       }, { headers: authHeader() });
     return response.data;
   }
+
+  async getAllPosts() {
+    const res = await axios.get(API_URL + 'all_posts')
+    return res
+  }
+
+  async getPost(id) {
+    const res = await axios.get(API_URL + 'post', {params: {_id: id}})
+    return res
+  }
 }
 
 export default new PostService();

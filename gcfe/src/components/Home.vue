@@ -1,13 +1,30 @@
 <template>
   <div class="container">
-    <header class="jumbotron">
-      <h3>{{ content }}</h3>
-    </header>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">CreateAt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="postInfo in content" v-bind:key="postInfo.id">
+          <th scope="row">
+            <router-link :to="'/post/' + postInfo._id" class="nav-link">{{
+              postInfo.title
+            }}</router-link>
+          </th>
+          <td>{{ postInfo.author }}</td>
+          <td>{{ postInfo.createdAt }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
-import UserService from "../services/user.service";
+import PostService from "../services/post.service";
 
 export default {
   name: "Home",
@@ -17,7 +34,7 @@ export default {
     };
   },
   mounted() {
-    UserService.getPublicContent().then(
+    PostService.getAllPosts().then(
       (response) => {
         this.content = response.data;
       },

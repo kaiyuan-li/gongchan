@@ -7,6 +7,7 @@ const Profile = () => import("./components/Profile.vue")
 const BoardAdmin = () => import("./components/BoardAdmin.vue")
 const BoardUser = () => import("./components/BoardUser.vue")
 const PostEditor = () => import("./components/PostEditor.vue")
+const PostView = () => import("./components/PostView.vue")
 
 const routes = [
   {
@@ -50,6 +51,12 @@ const routes = [
     // lazy-loaded
     component: PostEditor,
   },
+  {
+    path: '/post/:id',
+    name: 'post_view',
+    component: PostView,
+    props: true,
+  }
 ];
 
 const router = createRouter({

@@ -12,5 +12,7 @@ const addResHeader = (req, res, next) => {
 router.use(addResHeader)
 
 router.post('/post/submit', verifyToken, controller.submitPost)
+router.get('/post/all_posts', controller.getAllPosts)
+router.get('/post/post', controller.getPost)
 
 module.exports = router
