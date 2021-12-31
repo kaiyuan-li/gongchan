@@ -1,11 +1,10 @@
 // const config = require('../config/auth.config')
 const db = require('../models')
-const { User, Role } = db
+const { User } = db
 const config = require('../config/auth.config')
 
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-const { token } = require('morgan')
 
 exports.signup = async (req, res) => {
     const user = new User({
