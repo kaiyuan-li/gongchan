@@ -1,7 +1,6 @@
 const {startInMemoryDatabase} = require('../app/database/mongo')
 const mongoose = require('mongoose')
 const db = require('../app/models')
-const Role = require('../app/models/role.model')
 
 let dbServer = null
 // NOTE: there can be race inside this helper. Two tests accessing this file,
@@ -13,10 +12,6 @@ const initializeInMemoryDb = async () => {
     dbServer = await startInMemoryDatabase()
     const mongodbUrl = await dbServer.getUri()
     await mongoose.connect(mongodbUrl)
-
-    for (const role in db.ROLES) {
-        await new Role({name: role}).save()
-    }
 }
 
 // Disconnect and stop db server

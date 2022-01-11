@@ -1,11 +1,11 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
-const app = require('../../app')
+const app = require('../../../app')
 const {
     initializeInMemoryDb,
     cleanupDb
-} = require('../db-helper')
-const { User }= require('../../app/models')
+} = require('../../db-helper')
+const { User }= require('../../../app/models')
 const res = require('express/lib/response')
 
 chai.use(chaiHttp)

@@ -1,9 +1,7 @@
 <template>
   <div>
-    <div class="card">
-      <h2 class="card-title">{{post.title}}</h2>
+      <h2 >{{post.title}}</h2>
       <div v-html="postMark"></div>
-    </div>
   </div>
 </template>
 

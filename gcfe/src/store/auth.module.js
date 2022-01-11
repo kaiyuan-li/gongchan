@@ -9,33 +9,33 @@ export const auth = {
   namespaced: true,
   state: initialState,
   actions: {
-    login({ commit }, user) {
-      return AuthService.login(user).then(
-        user => {
-          commit('loginSuccess', user);
-          return Promise.resolve(user);
-        },
-        error => {
-          commit('loginFailure');
-          return Promise.reject(error);
+    async login({ commit }, user) {
+      try {
+        const response = await AuthService.login(user)
+        if (response.accessToken) {
+          localStorage.setItem('user', JSON.stringify(response))
         }
-      );
+        commit('loginSuccess', response)
+        return response
+
+      } catch (e) {
+        commit('loginFailure')
+      }
     },
     logout({ commit }) {
       AuthService.logout();
       commit('logout');
     },
-    register({ commit }, user) {
-      return AuthService.register(user).then(
-        response => {
-          commit('registerSuccess');
-          return Promise.resolve(response.data);
-        },
-        error => {
-          commit('registerFailure');
-          return Promise.reject(error);
+    async register({ commit }, user) {
+      try {
+        const res = await AuthService.register(user)
+        if (res.accessToken) {
+          localStorage.setItem('user', JSON.stringify(res))
+          commit('loginSuccess', res)
         }
-      );
+      } catch (e) {
+        commit('registerFailure')
+      }
     }
   },
   mutations: {

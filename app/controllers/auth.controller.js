@@ -16,13 +16,14 @@ exports.signup = async (req, res) => {
 
     console.log('saving user to database')
 
-    user.save(err => {
-        if (err) {
-            res.status(500).send({ message: err })
-            return
-        }
-
-        res.send({ message: "User registered successfully" })
+    const registeredUser = await user.save()
+    const token = jwt.sign({ id: registeredUser._id }, config.secret, { expiresIn: 86400 })
+    res.status(200).send({
+        id: registeredUser._id,
+        username: registeredUser.username,
+        email: registeredUser.email,
+        roles: registeredUser.roles,
+        accessToken: token
     })
 }
 
@@ -49,7 +50,7 @@ exports.signin = (req, res) => {
                 })
             }
             console.log('generating jwt token')
-            const token = jwt.sign({ id: user.id }, config.secret, { expiresIn: 86400 })
+            const token = jwt.sign({ id: user._id }, config.secret, { expiresIn: 86400 })
             res.status(200).send({
                 id: user._id,
                 username: user.username,

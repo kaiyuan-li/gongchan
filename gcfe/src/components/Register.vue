@@ -95,28 +95,27 @@ export default {
     }
   },
   methods: {
-    handleRegister(user) {
+    async handleRegister(user) {
       this.message = "";
       this.successful = false;
       this.loading = true;
 
-      this.$store.dispatch("auth/register", user).then(
-        (data) => {
-          this.message = data.message;
-          this.successful = true;
-          this.loading = false;
-        },
-        (error) => {
-          this.message =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-          this.successful = false;
-          this.loading = false;
-        }
-      );
+      try {
+        const response = await this.$store.dispatch("auth/register", user);
+        console.log("response is " + JSON.stringify(response));
+        this.successful = true;
+        this.loading = false;
+        this.$router.push('/')
+      } catch (error) {
+        this.message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        this.successful = false;
+        this.loading = false;
+      }
     },
   },
 };

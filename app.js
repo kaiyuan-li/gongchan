@@ -46,7 +46,7 @@ if (config.NODE_ENV === 'local') {
     }
     startDb()
 }
-if (config.NODE_ENV === 'dev') {
+if (config.NODE_ENV === 'dev' || config.NODE_ENV === 'prod') {
     const startDb = async () => {
         await mongoose.connect(config.URI)
         console.assert(mongoose.connection.readyState == 1)
